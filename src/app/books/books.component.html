@@ -4,31 +4,39 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form #form  ngNativeValidate>
+      <form #form ngNativeValidate>
         <div class="input-group">
-        <input name="bookname" ngModel type="text" class="form-control" placeholder="enter title" [(ngModel)]="book" required/>
-      </div>
-      <div class="input-group">
-        <input name="author" ngModel type="text" class="form-control" placeholder="enter author" [(ngModel)]="author" required/>
-      </div>
-      <div class="input-group">
-        <input name="publishdate" type="date" class="form-control" placeholder="enter publishdate" [(ngModel)]="publishdate" required/>
-      </div>
+          <input name="bookname" ngModel type="text" class="form-control" placeholder="enter title" [(ngModel)]="book"
+                 required/>
+        </div>
+        <div class="input-group">
+          <input name="author" ngModel type="text" class="form-control" placeholder="enter author" [(ngModel)]="author"
+                 required/>
+        </div>
+        <div class="input-group">
+          <input name="publishdate" type="date" class="form-control" placeholder="enter publishdate"
+                 [(ngModel)]="publishdate" required/>
+        </div>
         <div class="input-group container-fluid">
-          <button class="btn btn-primary" type="submit"  (click)="form.checkValidity()? addBook() : null">
+          <button class="btn btn-primary" type="submit" (click)="form.checkValidity()? addBook() : null">
             <span class="glyphicon glyphicon-ok">Add Book</span>
           </button>
         </div>
       </form>
-      </div>
     </div>
   </div>
+</div>
 
-  <br />
-  <div cdkDropList  (cdkDropListDropped)="onDrop($event)">
-    <div *ngFor="let book of books" class="book-item card" cdkDrag><div class="card-body"> {{book.title}} - {{book.author}} - {{book.publishdate}}</div></div>
+<br/>
+<div cdkDropList (cdkDropListDropped)="onDrop($event)">
+  <div *ngFor="let book of books" class="book-item card" cdkDrag>
+    <div class="row card-body">
+      <div class="col-4 book-title">{{book.title}}</div>
+      <div class="col-4">{{book.author}}</div>
+      <div class="col-4">{{book.publishdate}}</div>
+    </div>
   </div>
-  <div class="container">
-    Capitalize: <input type="checkbox" value="1" (click)="capitalizeTitles()">
-  </div>
-
+</div>
+<div class="container">
+   <label for="checkbox">Toggle Upper / Lower: </label><input id="checkbox" type="checkbox" value="1" (click)="capitalizeTitles()">
+</div>

@@ -24,12 +24,17 @@ export class BooksComponent implements OnInit {
       this.publishdate = '';
   }
   capitalizeTitles(): void {
-    const elements = document.querySelectorAll('.book-item .card-body');
+    const chk = document.getElementById('checkbox') as HTMLInputElement;
+    const elements = document.querySelectorAll('.book-item .card-body .book-title');
     // console.log(elements);
     // tslint:disable-next-line:prefer-for-of
     for (let i = 0; i < elements.length; i++) {
       const element = elements[i];
-      element.innerHTML = element.innerHTML.toUpperCase();
+      if (!chk.checked){
+        element.innerHTML = element.innerHTML.toLowerCase();
+      }else{
+        element.innerHTML = element.innerHTML.toUpperCase();
+      }
     }
   }
   ngOnInit(): void {
